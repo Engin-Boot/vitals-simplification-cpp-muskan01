@@ -1,15 +1,15 @@
 #include <assert.h>
 
-const int bpmlimits[] = {70,150};
-const int spo2check = 90;
-const int respRatecheck[] = {30,95};
+const float bpmlimits[] = {70,150};
+const float spo2check = 90;
+const float respRatecheck[] = {30,95};
 
-bool vitalIsOk(float value, int *limits)
+bool vitalIsOk(float value, float *limits)
 {
   return (value >= limits[0] && value <= limits[1]);
  }
  
-bool vitalcheck (float value, int checker)
+bool vitalcheck (float value, float checker)
 {
   return (value >= checker);
 }
