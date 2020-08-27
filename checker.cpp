@@ -5,7 +5,7 @@ const int respRatecheck[] = {30,95};
 
 bool bpmisOk(float bpm)
 {
-  return (bpm > bpmlimits[0] && bpm < bpmlimits[1];
+  return (bpm > bpmlimits[0] && bpm < bpmlimits[1]);
  }
  
 bool spo2isOk(float spo2)
@@ -15,7 +15,7 @@ bool spo2isOk(float spo2)
 
 bool respRateisOk(float respRate)
  {
-    return (respRate > respRatecheck[0] && respRate < respRatecheck[1];
+    return (respRate > respRatecheck[0] && respRate < respRatecheck[1]);
  }
 
 bool vitalsAreOk(float bpm, float spo2, float respRate) {
