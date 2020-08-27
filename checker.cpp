@@ -4,7 +4,7 @@ const int bpmlimits[] = {70,150};
 const int spo2check = 90;
 const int respRatecheck[] = {30,95};
 
-bool vitalIsOk(float value, int limits[2])
+bool vitalIsOk(float value, int *limits)
 {
   return (value >= limits[0] && value <= limits[1]);
  }
