@@ -14,7 +14,7 @@ bool vitalcheck (float value, int checker)
   return (value >= checker);
 }
 bool vitalsAreOk(float bpm, float spo2, float respRate) {
-  return(vitalIsOK(bpm,bpmlimits) && vitalcheck(spo2,spo2check) && vitalIsOk(respRate,respRatecheck));
+  return(vitalIsOk(bpm,bpmlimits) && vitalcheck(spo2,spo2check) && vitalIsOk(respRate,respRatecheck));
 }
 int main() {
   assert(vitalsAreOk(80, 95, 60) == true);
