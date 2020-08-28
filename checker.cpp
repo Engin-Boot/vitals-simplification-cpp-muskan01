@@ -1,17 +1,59 @@
 #include <assert.h>
+#include<iostream>
+using namespace std;
 
-bool vitalsAreOk(float bpm, float spo2, float respRate) {
-  if(bpm < 70 || bpm > 150) {
-    return false;
-  } else if(spo2 < 90) {
-    return false;
-  } else if(respRate < 30 || respRate > 95) {
-    return false;
+const float bpmLimits[] = {70,150};
+const float spo2Limits[] = {90,100};
+const float respRateLimits[] = {30,95};
+
+class Alert
+{
+  public:
+    virtual void SendAlert(const char* VitalName, const char* message) = 0;
+};
+class AlertInSMS : public Alert
+{
+  public:
+   void SendAlert(const char* VitalName, const char* message) override
+   { cout<<"SMS sent:"<< VitalName << " " << message << endl;
+   }
+};
+
+class AlertInSound : public Alert
+{
+  public:
+   void SendAlert(const char* VitalName, const char* message) override
+   { cout<<"Alarm sound:"<< VitalName << " " << message << endl;
+   }
+};
+
+bool vitalIsOk(const char* VitalName,float value, const int lowerlimit,const int upperlimit, Alert* alert)
+{
+  if (value < lowerlimit)
+  { alert->SendAlert( VitalName, "is low");
+  return false; 
   }
-  return true;
+  else if (value > upperlimit)
+     { alert->SendAlert( VitalName, "is high");
+           return false;
+     }
+  else
+  {
+        return true;
+   }
+ }
+ 
+bool vitalsAreOk(float bpm, float spo2, float respRate,Alert* alert) {
+  
+   return (vitalIsOk("BPM", bpm, bpmLimits[0], bpmLimits[1],alert ) 
+    && vitalIsOk( "SPO2", spo2, spo2Limits[0], spo2Limits[1],alert ) 
+    && vitalIsOk("Respiration Rate", respRate, respRateLimits[0], respRateLimits[1],alert));
+  
 }
-
 int main() {
-  assert(vitalsAreOk(80, 95, 60) == true);
-  assert(vitalsAreOk(60, 90, 40) == false);
+  Alert* alert = new AlertInSMS();
+  assert(vitalsAreOk(80, 95, 60,alert) == true);
+  
+   alert = new AlertInSMS();
+  assert(vitalsAreOk(60, 90, 40,alert) == false);
 }
