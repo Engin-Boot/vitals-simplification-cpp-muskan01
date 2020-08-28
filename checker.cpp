@@ -32,9 +32,11 @@ bool vitalIsOk(const char* VitalName,float value, const int lowerlimit,const int
   if (value < lowerlimit)
   { alert->SendAlert( VitalName, "is low");
   return false; 
+  }
   else if (value > upperlimit)
      { alert->SendAlert( VitalName, "is high");
-           return false; }
+           return false;
+     }
   else
   {
         return true;
@@ -45,7 +47,7 @@ bool vitalsAreOk(float bpm, float spo2, float respRate,Alert* alert) {
   
    return (vitalIsOk("BPM", bpm, bpmLimits[0], bpmLimits[1],alert ) 
     && vitalIsOk( "SPO2", spo2, spo2Limits[0], spo2Limits[1],alert ) 
-    && vitalIsOk("Respiration Rate", respRate, respRateLimit[0], respRateLimits[1]),alert );
+    && vitalIsOk("Respiration Rate", respRate, respRateLimits[0], respRateLimits[1]),alert );
   
 }
 int main() {
