@@ -47,13 +47,13 @@ bool vitalsAreOk(float bpm, float spo2, float respRate,Alert* alert) {
   
    return (vitalIsOk("BPM", bpm, bpmLimits[0], bpmLimits[1],alert ) 
     && vitalIsOk( "SPO2", spo2, spo2Limits[0], spo2Limits[1],alert ) 
-    && vitalIsOk("Respiration Rate", respRate, respRateLimits[0], respRateLimits[1]),alert );
+    && vitalIsOk("Respiration Rate", respRate, respRateLimits[0], respRateLimits[1],alert );
   
 }
 int main() {
   Alert* alert = new AlertInSMS();
-  assert(vitalsAreOk(80, 95, 60) == true);
+  assert(vitalsAreOk(80, 95, 60,alert) == true);
   
    alert = new AlertInSMS();
-  assert(vitalsAreOk(60, 90, 40) == false);
+  assert(vitalsAreOk(60, 90, 40,alert) == false);
 }
