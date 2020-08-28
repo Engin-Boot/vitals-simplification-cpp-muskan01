@@ -10,7 +10,7 @@ class Alert
 {
   public:
     virtual void SendAlert(const char* VitalName, const char* message) = 0;
-}
+};
 class AlertInSMS : public Alert
 {
   public:
