@@ -47,7 +47,7 @@ bool vitalsAreOk(float bpm, float spo2, float respRate,Alert* alert) {
   
    return (vitalIsOk("BPM", bpm, bpmLimits[0], bpmLimits[1],alert ) 
     && vitalIsOk( "SPO2", spo2, spo2Limits[0], spo2Limits[1],alert ) 
-    && vitalIsOk("Respiration Rate", respRate, respRateLimits[0], respRateLimits[1],alert );
+    && vitalIsOk("Respiration Rate", respRate, respRateLimits[0], respRateLimits[1],alert));
   
 }
 int main() {
