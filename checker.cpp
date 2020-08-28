@@ -32,8 +32,8 @@ bool vitalIsOk(const char* VitalName,float value, const int lowerlimit,const int
   if (value < lowerlimit)
   { alert->SendAlert( VitalName, "is low");
   return false; 
-  else if (value >lowerlimit)
-     { alert->SendAlert( VitalName, "is high";
+  else if (value > upperlimit)
+     { alert->SendAlert( VitalName, "is high");
            return false; }
   else
   {
